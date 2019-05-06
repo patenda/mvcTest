@@ -1,6 +1,9 @@
 package test.com.shi.springmvc.handlers;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -26,12 +29,14 @@ public class HelloWorldTest {
 		try {
 		      MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/helloworld"))
 		                .andExpect(MockMvcResultMatchers.status().is(200))
+//		                .andExpect(MockMvcResultMatchers.content().string("asdf"))
 		                .andDo(MockMvcResultHandlers.print())
 		                .andReturn();
-		      int status = mvcResult.getResponse().getStatus();
-		      System.out.println("请求状态码：" + status);
-		      String result = mvcResult.getResponse().getContentAsString();
-		      System.out.println("接口返回结果：" + result);
+		      MockHttpServletResponse response = mvcResult.getResponse();
+		      int status = response.getStatus();
+		      assertEquals(200, status);
+		      String result = response.getContentAsString();
+//		      assertEquals("asdf", result);
 		    } catch (Exception e) {
 		      e.printStackTrace();
 		    }

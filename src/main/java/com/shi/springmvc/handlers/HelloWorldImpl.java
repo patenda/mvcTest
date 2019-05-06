@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 public class HelloWorldImpl {
 
 	public String getHelloRtn() {
-        return "get returnInfo";
+        return "getHelloRtn2222";
     }
 }

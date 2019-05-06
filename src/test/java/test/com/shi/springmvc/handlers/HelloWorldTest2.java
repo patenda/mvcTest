@@ -1,8 +1,11 @@
 package test.com.shi.springmvc.handlers;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -41,16 +44,17 @@ public class HelloWorldTest2{
 	//private HelloWorldImpl helloWorldImpl;
 	
 	@Test
-	public void testHello() {
+	public void testHello2() {
 		try {
-		      MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/helloworld"))
+		      MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/helloworld2"))
 		                .andExpect(MockMvcResultMatchers.status().is(200))
 		                .andDo(MockMvcResultHandlers.print())
 		                .andReturn();
-		      int status = mvcResult.getResponse().getStatus();
-		      System.out.println("请求状态码：" + status);
-		      String result = mvcResult.getResponse().getContentAsString();
-		      System.out.println("接口返回结果：" + result);
+		      MockHttpServletResponse response = mvcResult.getResponse();
+		      int status = response.getStatus();
+		      assertEquals(200, status);
+		      String result = response.getContentAsString();
+//		      assertEquals("asdf", result);
 		    } catch (Exception e) {
 		      e.printStackTrace();
 		    }

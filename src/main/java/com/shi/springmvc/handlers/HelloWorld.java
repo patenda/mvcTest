@@ -11,13 +11,15 @@ public class HelloWorld {
 	@Resource
 	private HelloWorldImpl helloWorldImpl;
 
-	 /**
-     * 
-     * @return
-     */
+    @RequestMapping("/helloworld2")    
+    public String hello2() {
+        System.out.println(this.helloWorldImpl.getHelloRtn());        
+        return "success";
+    }
+    
     @RequestMapping("/helloworld")    
     public String hello() {
-        System.out.println(this.helloWorldImpl.getHelloRtn());        
+        System.out.println("success");        
         return "success";
     }
 }

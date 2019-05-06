@@ -8,7 +8,7 @@
 </head>
 <body>
  
-<h4>success!</h4>
+<h4>success <%=request.getRequestURI()  %>!</h4>
  
 </body>
 </html>

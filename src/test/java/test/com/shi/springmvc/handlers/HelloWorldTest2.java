@@ -3,8 +3,9 @@ package test.com.shi.springmvc.handlers;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -16,12 +17,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import com.shi.springmvc.handlers.HelloWorldController;
-import com.shi.springmvc.handlers.Service;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration

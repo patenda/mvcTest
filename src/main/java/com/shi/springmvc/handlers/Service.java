@@ -1,9 +1,9 @@
 package com.shi.springmvc.handlers;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-@Repository
-public class HelloWorldImpl {
+@Component
+public class Service {
 
 	public String getHelloRtn() {
         return "getHelloRtn2222";

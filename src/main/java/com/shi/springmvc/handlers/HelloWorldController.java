@@ -6,14 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HelloWorld {
+public class HelloWorldController {
 	
 	@Resource
-	private HelloWorldImpl helloWorldImpl;
+	private Service service;
 
     @RequestMapping("/helloworld2")    
     public String hello2() {
-        System.out.println(this.helloWorldImpl.getHelloRtn());        
+        System.out.println(this.service.getHelloRtn());        
         return "success";
     }
     

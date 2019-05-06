@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.shi.springmvc.handlers.HelloWorld;
+import com.shi.springmvc.handlers.HelloWorldController;
 
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ public class HelloWorldTest {
 
 	@Before
 	  public void setUp() {
-		HelloWorld helloController = new HelloWorld();
+		HelloWorldController helloController = new HelloWorldController();
 	    mockMvc = MockMvcBuilders.standaloneSetup(helloController).build();
 	  }
 	  

@@ -17,8 +17,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.shi.springmvc.handlers.HelloWorld;
-import com.shi.springmvc.handlers.HelloWorldImpl;
+import com.shi.springmvc.handlers.HelloWorldController;
+import com.shi.springmvc.handlers.Service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,16 +1,14 @@
 package com.shi.springmvc.handlers;
 
+import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.io.IOException;
-import java.net.URI;
 
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties.Cluster;
 import org.springframework.stereotype.Component;
 
 import com.couchbase.client.CouchbaseClient;
@@ -27,6 +25,12 @@ public class CountService {
 	public static final String KEY = "testkey";  
 	public static final int EXP_TIME = 0;  
 
+	/**
+	 * 1.get the balance count
+	 * 2.save the data in couchbase
+	 * @param jsonStr
+	 * @return
+	 */
 	public String getCount(String jsonStr){
 
 		JSONObject obj=(JSONObject)JSONValue.parse(jsonStr);
@@ -39,11 +43,19 @@ public class CountService {
 			tP.setValue(Integer.parseInt(""+tmp.get("value")));
 			in.add(tP);
 		}
+		List<PoolInfo> o = this.getBalancedArray(in);
+		JSONObject t = new JSONObject();
+		t.put("info", o);
+		this.saveData(t.toJSONString());
 		
-		
-        return "getHelloRtn2222";
+        return "success";
     }
 	
+	/**
+	 * get the balance count
+	 * @param list
+	 * @return
+	 */
 	public List<PoolInfo> getBalancedArray(List<PoolInfo> list) {
 	
 		if (list.size()<=DIVIDED_TO) {
@@ -101,7 +113,7 @@ public class CountService {
 		uris.add(URI.create("http://127.0.0.1:8091/pools"));  
 		CouchbaseClient client = null; 
 	    try {  
-	        client = new CouchbaseClient(uris, "pool_info", "uiluil");  
+	        client = new CouchbaseClient(uris, "default", "");  
 	      } catch (IOException e) {  
 	        System.err.println("IOException connecting to Couchbase: " + e.getMessage());  
 	        return "1";
@@ -125,8 +137,4 @@ public class CountService {
 	      client.shutdown(3, TimeUnit.SECONDS);  
 	      return "0"; 
 	}
-	
-//	public String saveDataB(String str) {
-//		Cluster cluster = CouchbaseCluster.create("localhost");
-//	}
 }

@@ -12,6 +12,7 @@ import com.shi.springmvc.handlers.PoolInfo;
 
 public class CountServiceTest {
 
+	
 	//@Test
 	public void testGetBalancedArray() {
 		//fail("Not yet implemented");
@@ -46,7 +47,7 @@ public class CountServiceTest {
 		s.getCount(jsonStr);
 	}
 	
-	@Test
+	//@Test
 	public void testSaveData() {
 		CountService s= new CountService();
 		String r = s.saveData("111");

@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PoolController {
 	
 	@Resource
-	private CountService service;
+	private CountService cntService;
 
     @RequestMapping("/poolCount")    
     public String newCount(HttpServletRequest request) {
     	String s = request.getParameter("s");
     	System.out.println(s);        
-        //System.out.println(this.service.getHelloRtn());        
+        this.cntService.getCount(s);  
         return "success";
     }
     
